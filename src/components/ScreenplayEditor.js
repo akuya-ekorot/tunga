@@ -77,7 +77,6 @@ export default function ScreenplayEditor() {
       switch (parent.type) {
         case "scene":
           setElement(1);
-          console.log(element)
           type = "sceneDescription";
           break;
         case "character" :
@@ -106,7 +105,6 @@ export default function ScreenplayEditor() {
   return (
     <Slate editor={editor} value={value} onChange={setValue}>
       <Editable
-        className="w-full h-full"
         renderElement={renderElement}
         onKeyDown={(event) => onKeyDown(event, editor)}
       />
