@@ -1,8 +1,9 @@
 import {
-  ActionBlock,
-  FadeIn,
   CharacterBlock,
+  DefaultBlock,
   DialogueBlock,
+  FadeInBlock,
+  FadeOutBlock,
   NoteBlock,
   ParentheticalsBlock,
   SceneBlock,
@@ -13,15 +14,16 @@ import {
 
 const renderElement = (props) => {
   const elements = {
-    action: <ActionBlock {...props} />,
-    fadeIn: <FadeIn {...props} />,
+    action: <DefaultBlock {...props} />,
     character: <CharacterBlock {...props} />,
     dialogue: <DialogueBlock {...props} />,
+    fadeIn: <FadeInBlock {...props} />,
+    fadeOut: <FadeOutBlock {...props} />,
     note: <NoteBlock {...props} />,
     parentheticals: <ParentheticalsBlock {...props} />,
     scene: <SceneBlock {...props} />,
-    screenPlayTitle: <ScreenPlayTitle {...props} />,
     sceneDescription: <SceneDescriptionBlock {...props} />,
+    screenPlayTitle: <ScreenPlayTitle {...props} />,
     transition: <TransitionBlock {...props} />,
   };
 

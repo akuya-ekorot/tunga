@@ -1,4 +1,4 @@
-const FadeIn = (props) => {
+const FadeInBlock = (props) => {
   return (
     <div className="uppercase" {...props.attributes}>
       <p>{props.children}:</p>
@@ -6,4 +6,4 @@ const FadeIn = (props) => {
   );
 };
 
-export default FadeIn;
+export default FadeInBlock;

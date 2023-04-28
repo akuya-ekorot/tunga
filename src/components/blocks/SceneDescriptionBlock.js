@@ -1,6 +1,6 @@
 const SceneDescriptionBlock = (props) => {
   return (
-    <div className="mb-4" {...props.attributes}>
+    <div className="" {...props.attributes}>
       <p>{props.children}</p>
     </div>
   );

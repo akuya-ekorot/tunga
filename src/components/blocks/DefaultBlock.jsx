@@ -1,4 +1,4 @@
-const ActionBlock = (props) => {
+const DefaultBlock = (props) => {
   return (
     <div className="" {...props.attributes}>
       <p>{props.children}</p>
@@ -6,4 +6,4 @@ const ActionBlock = (props) => {
   );
 };
 
-export default ActionBlock;
+export default DefaultBlock;
