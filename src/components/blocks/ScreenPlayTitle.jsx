@@ -1,7 +1,7 @@
 const ScreenPlayTitle = (props) => {
   return (
     <div className="text-center uppercase" {...props.attributes}>
-      <p>"{props.children}"</p>
+      <p>{props.children}</p>
     </div>
   );
 };

@@ -34,38 +34,60 @@ const onKeyDown = (
 
   if (event.key == "Enter") {
     event.preventDefault();
+
     const { selection } = editor;
+    console.log("selection", selection);
+
+    const path = selection.focus.path;
+    console.log("path", path);
+
     const [currentNode] = Editor.nodes(editor, { at: selection });
+    console.log("current node", currentNode);
+
     const [parent] = Editor.parent(editor, currentNode[0].selection);
-    let type = "";
+    console.log("parent", parent);
+    let type;
 
     switch (parent.type) {
-      case "screenplayTitle":
-        type = "screenPlayTitle";
-      case "scene":
-        setElement(1);
-        type = "sceneDescription";
-        break;
       case "character":
-        setElement(4);
         type = "dialogue";
+        break;
+      case "fadeIn":
+        type = "scene";
+        break;
+      case "fadeOut":
+        type = "end";
+        break;
+      case "fadeOut":
+        type = "end";
+        break;
+      case "note":
+        type = "sceneDescription";
         break;
       case "parentheticals":
-        setElement(4);
         type = "dialogue";
         break;
-      case "dialogue":
-        type = "character";
+      case "scene":
+        type = "sceneDescription";
+        break;
+      case "screenPlayTitle":
+        type = "fadeIn";
         setElement(4);
         break;
+      case "transition":
+        type = "scene";
+        break;
       default:
-        type = "sceneDescription";
+        type = parent.type;
     }
 
-    Transforms.insertNodes(editor, {
-      type,
-      children: [{ text: "" }],
-    });
+    Transforms.insertNodes(
+      editor,
+      {
+        type,
+        children: [{ text: "" }],
+      },
+    );
   }
 
   if (event.key == "/" && !event.ctrlKey) {

@@ -1,6 +1,7 @@
 export { default as CharacterBlock } from "./CharacterBlock";
 export { default as DefaultBlock } from "./DefaultBlock";
 export { default as DialogueBlock } from "./DialogueBlock";
+export { default as EndBlock } from "./EndBlock";
 export { default as FadeInBlock } from "./FadeInBlock";
 export { default as FadeOutBlock } from "./FadeOutBlock";
 export { default as NoteBlock } from "./NoteBlock";

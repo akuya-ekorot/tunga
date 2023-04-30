@@ -1,7 +1,7 @@
 const FadeOutBlock = (props) => {
   return (
-    <div className="uppercase" {...props.attributes}>
-      <p>{props.children}:</p>
+    <div className="uppercase flex justify-end" {...props.attributes}>
+      <p>{props.children}.</p>
     </div>
   );
 };
