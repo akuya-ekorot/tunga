@@ -1,4 +1,4 @@
-const SceneDescriptionBlock = (props) => {
+const DefaultBlock = (props) => {
   return (
     <div className="mb-4" {...props.attributes}>
       <p>{props.children}</p>
@@ -6,4 +6,4 @@ const SceneDescriptionBlock = (props) => {
   );
 };
 
-export default SceneDescriptionBlock;
+export default DefaultBlock;

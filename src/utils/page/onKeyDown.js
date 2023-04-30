@@ -40,32 +40,47 @@ const onKeyDown = (
     let type = "";
 
     switch (parent.type) {
-      case "screenplayTitle":
-        type = "screenPlayTitle";
-      case "scene":
-        setElement(1);
-        type = "sceneDescription";
-        break;
       case "character":
-        setElement(4);
-        type = "dialogue";
-        break;
-      case "parentheticals":
-        setElement(4);
         type = "dialogue";
         break;
       case "dialogue":
+        Transforms.insertNodes(editor, { type: "space", children: [{ text: "" }] });
         type = "character";
-        setElement(4);
+        break;
+      case "fadeIn":
+        type = "scene";
+        break;
+      case "fadeOut":
+        type = "end";
+        break;
+      case "fadeOut":
+        type = "end";
+        break;
+      case "note":
+        type = "sceneDescription";
+        break;
+      case "parentheticals":
+        type = "dialogue";
+        break;
+      case "scene":
+        type = "sceneDescription";
+        break;
+      case "screenPlayTitle":
+        type = "fadeIn";
+        break;
+      case "transition":
+        type = "scene";
         break;
       default:
-        type = "sceneDescription";
+        type = parent.type;
+        break;
     }
 
-    Transforms.insertNodes(editor, {
-      type,
-      children: [{ text: "" }],
-    });
+    /**
+     * Handle spacing between blocks.
+     */
+
+    Transforms.insertNodes(editor, { type, children: [{ text: "" }] });
   }
 
   if (event.key == "/" && !event.ctrlKey) {

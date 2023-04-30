@@ -1,27 +1,33 @@
 import {
-  ActionBlock,
-  FadeIn,
   CharacterBlock,
+  DefaultBlock,
   DialogueBlock,
+  EndBlock,
+  FadeInBlock,
+  FadeOutBlock,
   NoteBlock,
   ParentheticalsBlock,
   SceneBlock,
-  SceneDescriptionBlock,
   ScreenPlayTitle,
+  SpaceBlock,
   TransitionBlock,
 } from "@/components/blocks";
 
 const renderElement = (props) => {
+
   const elements = {
-    action: <ActionBlock {...props} />,
-    fadeIn: <FadeIn {...props} />,
+    action: <DefaultBlock {...props} />,
     character: <CharacterBlock {...props} />,
     dialogue: <DialogueBlock {...props} />,
+    end: <EndBlock {...props} />,
+    fadeIn: <FadeInBlock {...props} />,
+    fadeOut: <FadeOutBlock {...props} />,
     note: <NoteBlock {...props} />,
     parentheticals: <ParentheticalsBlock {...props} />,
     scene: <SceneBlock {...props} />,
+    sceneDescription: <DefaultBlock {...props} />,
     screenPlayTitle: <ScreenPlayTitle {...props} />,
-    sceneDescription: <SceneDescriptionBlock {...props} />,
+    space: <SpaceBlock {...props} />,
     transition: <TransitionBlock {...props} />,
   };
 

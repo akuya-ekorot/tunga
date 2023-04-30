@@ -5,14 +5,18 @@
  */
 const toggleElements = (setElement, element) => {
   const elements = [
-    "screenPlayTitle",
-    "scene",
-    "sceneDescription",
+    "action",
     "character",
     "dialogue",
-    "parentheticals",
-    "transition",
+    "end",
+    "fadeIn",
+    "fadeOut",
     "note",
+    "parentheticals",
+    "scene",
+    "sceneDescription",
+    "screenPlayTitle",
+    "transition",
   ];
 
   setElement((prev) => {
