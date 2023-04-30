@@ -1,4 +1,4 @@
-const SceneDescriptionBlock = (props) => {
+const SpaceBlock = (props) => {
   return (
     <div className="" {...props.attributes}>
       <p>{props.children}</p>
@@ -6,4 +6,4 @@ const SceneDescriptionBlock = (props) => {
   );
 };
 
-export default SceneDescriptionBlock;
+export default SpaceBlock;

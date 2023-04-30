@@ -1,6 +1,6 @@
 const FadeInBlock = (props) => {
   return (
-    <div className="uppercase" {...props.attributes}>
+    <div className="uppercase mb-4" {...props.attributes}>
       <p>{props.children}:</p>
     </div>
   );

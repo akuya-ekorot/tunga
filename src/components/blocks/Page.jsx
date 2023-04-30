@@ -19,7 +19,8 @@ const Page = () => {
           {commandBox && <CommandBox coords={coords} />}
         </div>
         <Editable
-          className="w-[594px] pl-[108px] pr-[62px] pt-[72px]"
+          className="w-[594px] pl-[108px] pr-[62px] pt-[72px] border-x border-slate-300"
+          renderElement={(props) => renderElement(props)}
           onKeyDown={(event) =>
             onKeyDown(
               event,
@@ -31,7 +32,6 @@ const Page = () => {
               setCommandBox
             )
           }
-          renderElement={renderElement}
         />
       </div>
     </Slate>

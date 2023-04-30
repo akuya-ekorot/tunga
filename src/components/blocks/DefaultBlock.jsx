@@ -1,6 +1,6 @@
 const DefaultBlock = (props) => {
   return (
-    <div className="" {...props.attributes}>
+    <div className="mb-4" {...props.attributes}>
       <p>{props.children}</p>
     </div>
   );

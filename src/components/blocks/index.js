@@ -9,4 +9,5 @@ export { default as Page } from "./Page";
 export { default as ParentheticalsBlock } from "./ParantheticalsBlock";
 export { default as SceneBlock } from "./SceneBlock";
 export { default as ScreenPlayTitle } from "./ScreenPlayTitle";
+export { default as SpaceBlock } from "./SpaceBlock";
 export { default as TransitionBlock } from "./TransitionBlock";

@@ -9,10 +9,12 @@ import {
   ParentheticalsBlock,
   SceneBlock,
   ScreenPlayTitle,
+  SpaceBlock,
   TransitionBlock,
 } from "@/components/blocks";
 
 const renderElement = (props) => {
+
   const elements = {
     action: <DefaultBlock {...props} />,
     character: <CharacterBlock {...props} />,
@@ -25,6 +27,7 @@ const renderElement = (props) => {
     scene: <SceneBlock {...props} />,
     sceneDescription: <DefaultBlock {...props} />,
     screenPlayTitle: <ScreenPlayTitle {...props} />,
+    space: <SpaceBlock {...props} />,
     transition: <TransitionBlock {...props} />,
   };
 

@@ -34,23 +34,18 @@ const onKeyDown = (
 
   if (event.key == "Enter") {
     event.preventDefault();
-
     const { selection } = editor;
-    console.log("selection", selection);
-
-    const path = selection.focus.path;
-    console.log("path", path);
-
     const [currentNode] = Editor.nodes(editor, { at: selection });
-    console.log("current node", currentNode);
-
     const [parent] = Editor.parent(editor, currentNode[0].selection);
-    console.log("parent", parent);
-    let type;
+    let type = "";
 
     switch (parent.type) {
       case "character":
         type = "dialogue";
+        break;
+      case "dialogue":
+        Transforms.insertNodes(editor, { type: "space", children: [{ text: "" }] });
+        type = "character";
         break;
       case "fadeIn":
         type = "scene";
@@ -72,22 +67,20 @@ const onKeyDown = (
         break;
       case "screenPlayTitle":
         type = "fadeIn";
-        setElement(4);
         break;
       case "transition":
         type = "scene";
         break;
       default:
         type = parent.type;
+        break;
     }
 
-    Transforms.insertNodes(
-      editor,
-      {
-        type,
-        children: [{ text: "" }],
-      },
-    );
+    /**
+     * Handle spacing between blocks.
+     */
+
+    Transforms.insertNodes(editor, { type, children: [{ text: "" }] });
   }
 
   if (event.key == "/" && !event.ctrlKey) {
