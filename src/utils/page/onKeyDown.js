@@ -75,7 +75,7 @@ const onKeyDown = (
         break;
     }
 
-    if (pageRef.current.offsetHeight > 842) {
+    if (pageRef.current?.offsetHeight > 842) {
       Transforms.insertNodes(editor,
         {
           type: "play",
@@ -85,10 +85,13 @@ const onKeyDown = (
               children: [{ text: "" }],
             },
           ]
+        },
+        {
+          at: [editor.children.length]
         }
-      );
-    };
-
+      )
+      Transforms.select(editor, [editor.children.length - 1, 0, 0])
+    }
     Transforms.insertNodes(editor, { type, children: [{ text: "" }] });
   }
 };

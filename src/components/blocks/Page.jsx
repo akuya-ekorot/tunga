@@ -9,7 +9,6 @@ const Page = () => {
   const [element, setElement] = useState(0);
 
   const pageRef = useRef();
-  console.log(pageRef.current?.offsetHeight);
 
   return (
     <div>
