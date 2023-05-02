@@ -1,15 +1,11 @@
 import { Page } from "@/components/blocks";
-import { useRef, useState } from "react";
 
 export default function Home() {
-  const [pageHeight, setPageHeight] = useState(0);
-  const pageRef = useRef();
 
   return (
     <>
       <Navigation />
-      <div>{pageHeight}</div>
-      <Page pageRef={pageRef} setPageHeight={setPageHeight} />
+      <Page />
     </>
   );
 }

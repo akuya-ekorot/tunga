@@ -16,8 +16,7 @@ const onKeyDown = (
   Editor,
   element,
   setElement,
-  setCoords,
-  setCommandBox
+  pageRef,
 ) => {
   if (event.key == "Tab") {
     event.preventDefault();
@@ -76,18 +75,21 @@ const onKeyDown = (
         break;
     }
 
-    /**
-     * Handle spacing between blocks.
-     */
+    if (pageRef.current.offsetHeight > 842) {
+      Transforms.insertNodes(editor,
+        {
+          type: "play",
+          children: [
+            {
+              type,
+              children: [{ text: "" }],
+            },
+          ]
+        }
+      );
+    };
 
     Transforms.insertNodes(editor, { type, children: [{ text: "" }] });
-  }
-
-  if (event.key == "/" && !event.ctrlKey) {
-    setCoords({
-      ...{ x: event.target.clientLeft, y: event.target.clientHeight },
-    });
-    setCommandBox(true);
   }
 };
 
