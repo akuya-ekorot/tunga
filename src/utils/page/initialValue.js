@@ -1,8 +1,13 @@
 const initialValue = [
   {
-    type: "screenPlayTitle",
-    children: [{ text: "" }],
-  },
+    type: "play",
+    children: [
+      {
+        type: "screenPlayTitle",
+        children: [{ text: "" }],
+      },
+    ]
+  }
 ];
 
 export default initialValue;

@@ -13,6 +13,7 @@ const toggleElements = (setElement, element) => {
     "fadeOut",
     "note",
     "parentheticals",
+    "play",
     "scene",
     "sceneDescription",
     "screenPlayTitle",

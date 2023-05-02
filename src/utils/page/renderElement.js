@@ -1,3 +1,4 @@
+import Play from "@/components/Play";
 import {
   CharacterBlock,
   DefaultBlock,
@@ -13,7 +14,7 @@ import {
   TransitionBlock,
 } from "@/components/blocks";
 
-const renderElement = (props) => {
+const renderElement = (props, pageRef) => {
 
   const elements = {
     action: <DefaultBlock {...props} />,
@@ -24,6 +25,7 @@ const renderElement = (props) => {
     fadeOut: <FadeOutBlock {...props} />,
     note: <NoteBlock {...props} />,
     parentheticals: <ParentheticalsBlock {...props} />,
+    play: <Play {...props} ref={pageRef} />,
     scene: <SceneBlock {...props} />,
     sceneDescription: <DefaultBlock {...props} />,
     screenPlayTitle: <ScreenPlayTitle {...props} />,
