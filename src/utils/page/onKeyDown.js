@@ -1,6 +1,6 @@
 import { Transforms, Element } from "slate";
 import toggleElements from "./toggleElements";
-import { getBlockType } from ".";
+import { getBlockType, handleAddPage } from ".";
 
 /**
  * handles keypress events from within the editor
@@ -10,6 +10,7 @@ import { getBlockType } from ".";
  * @param Editor -
  * @param element -
  * @param setElement -
+ * @parem pageRef - 
  */
 const onKeyDown = (
   event,
@@ -37,27 +38,27 @@ const onKeyDown = (
     );
   }
 
+  if (pageRef.current?.offsetHeight >= 842) {
+    handleAddPage(editor, type);
+  }
+
   if (event.key == "Enter") {
     event.preventDefault();
 
     if (pageRef.current?.offsetHeight >= 842) {
-      Transforms.insertNodes(editor,
-        {
-          type: "play",
-          children: [{ type, children: [{ text: "" }] }]
-        },
-        { at: [editor.children.length] }
-      );
-
-      Transforms.select(editor, [editor.children.length - 1, 0, 0])
+      handleAddPage(editor, type);
     } else {
+
+      /*
+       * add a space if the parent type is dialogue and the type selected
+       * is character
+       */
       if (type === "character" && parent.type === "dialogue")
         Transforms.insertNodes(editor, { type: "space", children: [{ text: "" }] });
 
       Transforms.insertNodes(editor, { type, children: [{ text: "" }] });
     }
   }
-
 };
 
 export default onKeyDown;
