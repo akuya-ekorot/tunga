@@ -1,6 +1,6 @@
 const NoteBlock = (props) => {
   return (
-    <div className="mb-4 uppercase" {...props.attributes}>
+    <div className="uppercase" {...props.attributes}>
       <p>{props.children}</p>
     </div>
   );

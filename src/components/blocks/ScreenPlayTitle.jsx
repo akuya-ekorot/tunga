@@ -1,6 +1,6 @@
 const ScreenPlayTitle = (props) => {
   return (
-    <div className="relative right-[23px] text-center uppercase mb-4" {...props.attributes}>
+    <div className="relative right-[23px] text-center uppercase" {...props.attributes}>
       <p>{props.children}</p>
     </div>
   );

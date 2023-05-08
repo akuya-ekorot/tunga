@@ -1,6 +1,6 @@
 import { Transforms, Element } from "slate";
 import toggleElements from "./toggleElements";
-import { getBlockType, handleAddPage } from ".";
+import { getBlockType } from ".";
 
 /**
  * handles keypress events from within the editor
@@ -10,20 +10,15 @@ import { getBlockType, handleAddPage } from ".";
  * @param Editor -
  * @param element -
  * @param setElement -
- * @parem pageRef - 
  */
-const onKeyDown = (
-  event,
-  editor,
-  Editor,
-  element,
-  setElement,
-  pageRef,
-) => {
+const onKeyDown = (event, editor, Editor, element, setElement) => {
   const { selection } = editor;
   const [currentNode] = Editor.nodes(editor, { at: selection });
   const [parent] = Editor.parent(editor, currentNode[0].selection);
   const type = getBlockType(parent);
+  const pageCount = editor.children.length;
+  const nodeCountInPage =
+    editor.children[selection.anchor.path[0]].children.length;
 
   if (event.key == "Tab") {
     event.preventDefault();
@@ -38,25 +33,39 @@ const onKeyDown = (
     );
   }
 
-  if (pageRef.current?.offsetHeight >= 842) {
-    handleAddPage(editor, type);
-  }
-
   if (event.key == "Enter") {
     event.preventDefault();
 
-    if (pageRef.current?.offsetHeight >= 842) {
-      handleAddPage(editor, type);
-    } else {
+    /* add appropriate descendant node after current node */
+    Transforms.insertNodes(editor, {
+      type,
+      children: [
+        {
+          text: "",
+        },
+      ],
+    });
 
-      /*
-       * add a space if the parent type is dialogue and the type selected
-       * is character
-       */
-      if (type === "character" && parent.type === "dialogue")
-        Transforms.insertNodes(editor, { type: "space", children: [{ text: "" }] });
+    /* handle new page if necessary  */
+    if (nodeCountInPage > 56) {
+      /* add new page if there is no next page */
+      if (editor.children.length == selection.anchor.path[0] + 1) {
+        Transforms.insertNodes(
+          editor,
+          {
+            type: "play",
+            children: [{ text: "" }],
+          },
+          {
+            at: [pageCount],
+          }
+        );
+      }
 
-      Transforms.insertNodes(editor, { type, children: [{ text: "" }] });
+      Transforms.moveNodes(editor, {
+        at: [selection.anchor.path[0], nodeCountInPage],
+        to: [selection.anchor.path[0] + 1, 0],
+      });
     }
   }
 };

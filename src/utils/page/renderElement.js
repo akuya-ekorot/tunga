@@ -14,7 +14,7 @@ import {
   TransitionBlock,
 } from "@/components/blocks";
 
-const renderElement = (props, pageRef) => {
+const renderElement = (props) => {
 
   const elements = {
     action: <DefaultBlock {...props} />,
@@ -25,7 +25,7 @@ const renderElement = (props, pageRef) => {
     fadeOut: <FadeOutBlock {...props} />,
     note: <NoteBlock {...props} />,
     parentheticals: <ParentheticalsBlock {...props} />,
-    play: <Play {...props} ref={pageRef} />,
+    play: <Play {...props} />,
     scene: <SceneBlock {...props} />,
     sceneDescription: <DefaultBlock {...props} />,
     screenPlayTitle: <ScreenPlayTitle {...props} />,
